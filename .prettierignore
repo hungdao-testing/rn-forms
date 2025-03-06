@@ -1,0 +1,7 @@
+dist/
+node_modules/
+Pods/
+
+android/
+ios/
+assets/*.json
