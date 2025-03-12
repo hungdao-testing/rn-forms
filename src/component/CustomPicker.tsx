@@ -13,6 +13,7 @@ const CustomPicker = ({name, label, ...pickerProps}: CustomPicker) => {
     field: {value, onBlur, onChange},
     fieldState: {error},
   } = useController({name});
+
   return (
     <View>
       <Text
@@ -25,6 +26,7 @@ const CustomPicker = ({name, label, ...pickerProps}: CustomPicker) => {
       </Text>
       <RNPickerSelect
         value={value}
+        itemKey={pickerProps.itemKey}
         onValueChange={onChange}
         onClose={onBlur}
         style={{
@@ -39,6 +41,12 @@ const CustomPicker = ({name, label, ...pickerProps}: CustomPicker) => {
         }}
         useNativeAndroidPickerStyle={false}
         {...pickerProps}
+        textInputProps={{
+          accessibilityLabel: value
+            ? `testID-${value}`
+            : JSON.parse(JSON.stringify(pickerProps.placeholder)).label,
+          testID: 'testID-testInputProps',
+        }}
       />
       <Text
         numberOfLines={1}
