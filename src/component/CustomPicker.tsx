@@ -43,7 +43,7 @@ const CustomPicker = ({name, label, ...pickerProps}: CustomPicker) => {
         {...pickerProps}
         textInputProps={{
           accessibilityLabel: value
-            ? `testID-${value}`
+            ? `${value}`
             : JSON.parse(JSON.stringify(pickerProps.placeholder)).label,
           testID: 'testID-testInputProps',
         }}
