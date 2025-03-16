@@ -24,11 +24,16 @@ export const PersonalInfoSchema = z.object({
 export type PersonalInfo = z.infer<typeof PersonalInfoSchema>;
 
 export const PaymentInfoSchema = z.object({
-  cardNumber: z.string().min(1),
+  cardNumber: z
+    .string({message: 'Please provide card number'})
+    .min(1, {message: 'Card number must be longer than 1'}),
   expireDate: z
     .string()
     .regex(/^(0[1-9]|1[0-2])\/?([0-9]{2})$/, 'Please use MM/YY format'),
-  cvv: z.coerce.number().min(100).max(999),
+  cvv: z.coerce
+    .number({message: 'Please provide cvv number'})
+    .min(100, {message: 'input should be greater than 100'})
+    .max(999, {message: 'input should be less than 999'}),
   saveCard: z.boolean().optional(),
 });
 

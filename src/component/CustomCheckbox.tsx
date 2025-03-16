@@ -32,7 +32,9 @@ const CustomCheckbox = ({name, label, size}: CustomCheckbox) => {
         }}>
         <TouchableOpacity
           onPress={handleCheckbox}
-          style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+          style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}
+          accessible={true}
+          >
           <View
             style={{
               width: '75%',
@@ -40,6 +42,9 @@ const CustomCheckbox = ({name, label, size}: CustomCheckbox) => {
               backgroundColor: androidCheckbox === false ? 'white' : 'black',
             }}
             testID={`${name}-checkbox`}
+            accessibilityLabel={
+              androidCheckbox === false ? 'off' : 'on'
+            }
           />
         </TouchableOpacity>
       </View>
